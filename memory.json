@@ -1,0 +1,12 @@
+{
+    "memory": [
+        {
+            "user_input": "Hello",
+            "answer": "Hi"
+        },
+        {
+            "user_input": "What's your name?",
+            "answer": "I'm a chatbot!"
+        }
+    ]
+}
