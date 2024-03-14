@@ -9,7 +9,7 @@ class ChatBot:
     def __init__(self, name: str, /) -> None:
         self.name = name
         self.current_data = []
-        self.memory_path = os.path.normpath("memory.json")
+        self.memory_path = os.path.normpath("chat_bot/memory.json")
 
         if os.path.exists(self.memory_path):
             with open(self.memory_path, mode="r") as file:
