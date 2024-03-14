@@ -7,6 +7,18 @@
         {
             "user_input": "What's your name?",
             "answer": "I'm a chatbot!"
+        },
+        {
+            "user_input": "Goodbye",
+            "answer": "Bye"
+        },
+        {
+            "user_input": "Good morning",
+            "answer": "Good morning"
+        },
+        {
+            "user_input": "Good evening",
+            "answer": "Good evening"
         }
     ]
 }
