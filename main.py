@@ -10,11 +10,11 @@ def run_conversation() -> None:
             option = input("Option: ").upper()
             match option:
                 case "A":
-                    conversation_mode(chat_bot)
+                    ChatBotMode.conversation(chat_bot)
                 case "B":
-                    math_solver_mode(chat_bot)
+                    ChatBotMode.math_solver(chat_bot)
                 case "C":
-                    learning_mode(chat_bot)
+                    ChatBotMode.learning(chat_bot)
                 case "D":
                     break
                 case _:
