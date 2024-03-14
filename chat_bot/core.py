@@ -1,8 +1,9 @@
 import os
+import re
 import random
 import json
 from types import TracebackType
-from typing import Optional, Type
+from typing import Optional, Type, Union
 
 
 class ChatBot:
@@ -32,6 +33,26 @@ class ChatBot:
         with open(self.memory_path, mode="w") as file:
             json.dump({"memory": self.current_data}, file, indent=4)
 
+    @staticmethod
+    def solve_easy_math_problems(user_input: str) -> Optional[list[Union[int, float]]]:
+        pattern = re.compile(r"(\d+)([+-:*])(\d+)")
+        problems = pattern.findall(user_input)
+        answers = []
+        if len(problems) > 0:
+            for problem in problems:
+                num1 = int(problem[0])
+                operator = problem[1]
+                num2 = int(problem[2])
+                if operator == "+":
+                    answers.append(num1 + num2)
+                elif operator == "-":
+                    answers.append(num1 - num2)
+                elif operator == "*":
+                    answers.append(num1 * num2)
+                else:
+                    answers.append(num1 / num2)
+        return answers
+
 
 class ChatBotManager:
     def __init__(self, chat_bot: ChatBot) -> None:
@@ -59,6 +80,13 @@ def conversation_mode(chat_bot: ChatBot) -> None:
         chat_bot.learn_something_new(user_input, new_answer)
     else:
         print(f"{chat_bot.name}: {answer}")
+
+
+def math_solver_mode(chat_bot: ChatBot) -> None:
+    user_input = input("You: ")
+    answers = chat_bot.solve_easy_math_problems(user_input)
+    final_result = "\n".join([f"{i}) {answer}" for i, answer in zip(range(1, len(answers)+1), answers)])
+    print(f"{chat_bot.name}:\n{final_result}")
 
 
 def learning_mode(chat_bot: ChatBot) -> None:

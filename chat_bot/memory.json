@@ -23,6 +23,10 @@
         {
             "user_input": "Good afternoon",
             "answer": "Good afternoon"
+        },
+        {
+            "user_input": "Hi",
+            "answer": "Hello"
         }
     ]
 }
